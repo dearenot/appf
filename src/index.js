@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import { appActionType } from "./actions/appActions";
 import { MemoizedCell } from "./components/Cell";
 import { UI } from "./components/UI";
+import { Glider } from "./domain/patterns.js/glider";
 import { INITIAL_STATE, reducer } from "./reducer/appReducer";
 import styles from "./styles.scss";
 
@@ -93,6 +94,17 @@ const App = () => {
     dispatch({ type: appActionType.INIT, data: { width: 16, height: 16 } });
   };
 
+  const createGlider = () => {
+    if (state.isSimulationOn) {
+      dispatch({ type: appActionType.TOGGLE_AUTOSIMULATION });
+    }
+    dispatch({
+      type: appActionType.INIT,
+      data: { width: null, height: null, pattern: Glider },
+    });
+    dispatch({ type: appActionType.TOGGLE_AUTOSIMULATION });
+  };
+
   const fieldWidth = state.field[0]?.length;
   const fieldHeight = state.field.length;
 
@@ -114,6 +126,7 @@ const App = () => {
               handleAddColumn={handleAddColumn}
               handleRemoveColumn={handleRemoveColumn}
               handleReset={handleReset}
+              createGlider={createGlider}
             />
           </div>
         </div>
