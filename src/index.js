@@ -3,8 +3,8 @@ import ReactDOM from "react-dom";
 import { appActionType } from "./actions/appActions";
 import { MemoizedCell } from "./components/Cell";
 import { UI } from "./components/UI";
-import { Glider } from "./domain/patterns.js/glider";
-import { Lwss } from "./domain/patterns.js/lwss";
+import { Glider } from "./domain/patterns/glider";
+import { Lwss } from "./domain/patterns/lwss";
 import { INITIAL_STATE, reducer } from "./reducer/appReducer";
 import styles from "./styles.scss";
 
