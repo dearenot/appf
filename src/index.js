@@ -86,6 +86,13 @@ const App = () => {
     dispatch({ type: appActionType.REMOVE_COLUMN });
   };
 
+  const handleReset = () => {
+    if (state.isSimulationOn) {
+      dispatch({ type: appActionType.TOGGLE_AUTOSIMULATION });
+    }
+    dispatch({ type: appActionType.INIT, data: { width: 16, height: 16 } });
+  };
+
   const fieldWidth = state.field[0]?.length;
   const fieldHeight = state.field.length;
 
@@ -106,6 +113,7 @@ const App = () => {
               handleRemoveRow={handleRemoveRow}
               handleAddColumn={handleAddColumn}
               handleRemoveColumn={handleRemoveColumn}
+              handleReset={handleReset}
             />
           </div>
         </div>

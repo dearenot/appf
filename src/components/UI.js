@@ -11,6 +11,7 @@ export const UI = ({
   handleRemoveRow,
   handleAddColumn,
   handleRemoveColumn,
+  handleReset,
 }) => {
   return (
     <>
@@ -43,6 +44,10 @@ export const UI = ({
 
       <button className={styles.button} onClick={handleRemoveColumn}>
         remove column
+      </button>
+
+      <button className={styles.button} onClick={handleReset}>
+        reset
       </button>
     </>
   );
