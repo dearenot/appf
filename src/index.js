@@ -4,6 +4,7 @@ import { appActionType } from "./actions/appActions";
 import { MemoizedCell } from "./components/Cell";
 import { UI } from "./components/UI";
 import { Glider } from "./domain/patterns.js/glider";
+import { Lwss } from "./domain/patterns.js/lwss";
 import { INITIAL_STATE, reducer } from "./reducer/appReducer";
 import styles from "./styles.scss";
 
@@ -14,7 +15,7 @@ const App = () => {
   const [timeout, updateTimeout] = useState(null);
 
   useEffect(() => {
-    dispatch({ type: appActionType.INIT, data: { width: 16, height: 16 } });
+    dispatch({ type: appActionType.INIT, data: { width: 8, height: 8 } });
 
     return () => {
       toggleAutosimulationOff();
@@ -91,7 +92,7 @@ const App = () => {
     if (state.isSimulationOn) {
       dispatch({ type: appActionType.TOGGLE_AUTOSIMULATION });
     }
-    dispatch({ type: appActionType.INIT, data: { width: 16, height: 16 } });
+    dispatch({ type: appActionType.INIT, data: { width: 8, height: 8 } });
   };
 
   const createGlider = () => {
@@ -101,6 +102,17 @@ const App = () => {
     dispatch({
       type: appActionType.INIT,
       data: { width: null, height: null, pattern: Glider },
+    });
+    dispatch({ type: appActionType.TOGGLE_AUTOSIMULATION });
+  };
+
+  const createLwss = () => {
+    if (state.isSimulationOn) {
+      dispatch({ type: appActionType.TOGGLE_AUTOSIMULATION });
+    }
+    dispatch({
+      type: appActionType.INIT,
+      data: { width: null, height: null, pattern: Lwss },
     });
     dispatch({ type: appActionType.TOGGLE_AUTOSIMULATION });
   };
@@ -127,6 +139,7 @@ const App = () => {
               handleRemoveColumn={handleRemoveColumn}
               handleReset={handleReset}
               createGlider={createGlider}
+              createLwss={createLwss}
             />
           </div>
         </div>

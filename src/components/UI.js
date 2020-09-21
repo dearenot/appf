@@ -13,6 +13,7 @@ export const UI = ({
   handleRemoveColumn,
   handleReset,
   createGlider,
+  createLwss,
 }) => {
   return (
     <>
@@ -52,6 +53,9 @@ export const UI = ({
       </button>
       <button className={styles.button} onClick={createGlider}>
         Glider
+      </button>
+      <button className={styles.button} onClick={createLwss}>
+        Lwss
       </button>
     </>
   );

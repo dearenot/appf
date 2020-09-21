@@ -31,7 +31,15 @@ body {
   flex-wrap: wrap;
 }
 
-$columns: 32;
+.fieldContainerContainer {
+  margin-top: 16px;
+
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+$columns: 64;
 
 @for $i from 1 through $columns {
   .columns-#{$i} {
@@ -66,11 +74,4 @@ $columns: 32;
       height: (map.get(cell_style.$sizes, "xl") * $i);
     }
   }
-}
-
-.fieldContainerContainer {
-  display: flex;
-  width: 100%;
-  justify-content: center;
-  margin-top: 16px;
 }
