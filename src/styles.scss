@@ -1,0 +1,76 @@
+@use './breakpoints.scss' as breakpoints;
+@use './components/cell.scss' as cell_style;
+@use "sass:map";
+
+body {
+  margin: 0px;
+  padding: 0px;
+}
+
+.ui_container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.ui_wrapper {
+  display: inline-flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 98%;
+  max-width: 98%;
+
+  @include breakpoints.sm {
+    width: 80%;
+    max-width: 80%;
+  }
+}
+
+.fieldContainer {
+  display: inline-flex;
+  flex-wrap: wrap;
+}
+
+$columns: 32;
+
+@for $i from 1 through $columns {
+  .columns-#{$i} {
+    width: (map.get(cell_style.$sizes, "xs") * $i);
+
+    @include breakpoints.sm {
+      width: (map.get(cell_style.$sizes, "sm") * $i);
+    }
+
+    @include breakpoints.lg {
+      width: (map.get(cell_style.$sizes, "lg") * $i);
+    }
+
+    @include breakpoints.xl {
+      width: (map.get(cell_style.$sizes, "xl") * $i);
+    }
+  }
+}
+
+@for $i from 1 through $columns {
+  .rows-#{$i} {
+    height: (map.get(cell_style.$sizes, "xs") * $i);
+
+    @include breakpoints.sm {
+      height: (map.get(cell_style.$sizes, "sm") * $i);
+    }
+    @include breakpoints.lg {
+      height: (map.get(cell_style.$sizes, "lg") * $i);
+    }
+
+    @include breakpoints.xl {
+      height: (map.get(cell_style.$sizes, "xl") * $i);
+    }
+  }
+}
+
+.fieldContainerContainer {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin-top: 16px;
+}

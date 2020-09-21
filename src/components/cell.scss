@@ -1,0 +1,49 @@
+@use '../breakpoints.scss' as breakpoints;
+
+@use "sass:map";
+
+$active_color: #696969;
+$inactive_color: #dcdcdc;
+
+$sizes: (
+  "xs": 20px,
+  "sm": 24px,
+  "md": 28px,
+  "lg": 32px,
+  "xl": 36px,
+);
+
+.cell {
+  display: inline-block;
+  cursor: pointer;
+  box-sizing: content-box;
+  width: map.get($sizes, "xs");
+  height: map.get($sizes, "xs");
+  outline: 1px solid black;
+  text-align: center;
+  vertical-align: middle;
+
+  @include breakpoints.sm {
+    width: (map.get($sizes, "sm"));
+    height: (map.get($sizes, "sm"));
+  }
+  @include breakpoints.lg {
+    width: (map.get($sizes, "lg"));
+    height: (map.get($sizes, "lg"));
+  }
+
+  @include breakpoints.xl {
+    width: (map.get($sizes, "xl"));
+    height: (map.get($sizes, "xl"));
+  }
+}
+
+.cell[value="0"] {
+  @extend .cell;
+  background-color: $inactive_color;
+}
+
+.cell[value="1"] {
+  @extend .cell;
+  background-color: $active_color;
+}
